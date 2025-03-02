@@ -10,6 +10,9 @@
     font-family: SourceSerif4-Regular;
     src: url('../fonts/SourceSerif4-Regular.ttf');
 }
+body{
+    min-height: 300vh;
+}
 *{
     margin: 0;
     padding: 0;
@@ -33,47 +36,55 @@ button{
     cursor: pointer;
 }
 .container{
-    max-width: 1230px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 10px;
 }
 
 
-.scroolTop{
-    position: fixed;
-    width: 35px;
-    height: 60px;
-    background: black;
-    border-radius: 30%;
-    bottom: 30px;
-    right: 30px;
-    transition: .5s;
-    color: white;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.scroolTop:hover{
+.top{
+    width: 40px;
+    height: 40px;
+    background: #000;
     border-radius: 50%;
-    font-size: 20px;
+    display: inline-block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: .3s;
+}
+.top.hidden{
+    bottom: -40px;
+    right: -40px;
 }
 /* header  */
 .header{
-    position: static;
+    position: sticky;
     top: 0;
+    left: 0;
     z-index: 1000;
     width: 100%;
+    background: white;
+    /* backdrop-filter: blur(100px); */
     border-bottom: 1px solid #999;
+    transition: .3s;
+}
+.header.shrink{
+    box-shadow: 0 5px 5px #0001;
+    /* backdrop-filter: blur(100px); */
+}
+.header.shrink .navbar{
+    height: 50px;
 }
 .navbar{
-    width: 100%;
     height: 90px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px 0 0;
+    transition: .3s;
+
 }
 .navbar__collaction{
     display: flex;
@@ -108,7 +119,6 @@ button{
     width: 100%;
     max-height: 421px;
     height: 100%;
-    object-fit: cover;
 }
 .illustration__theme{
     text-transform: uppercase;
@@ -129,6 +139,7 @@ button{
     max-width: 430px;
     width: 100%;
     font-size: 16px;
+    color: #666666;
     font-family: SourceSerif4-Regular;
     margin-bottom: 28px;
 }
@@ -190,6 +201,7 @@ button{
 .card__wrapper{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .card{
     max-width: 25%;
@@ -274,12 +286,9 @@ button{
 
 /* footer  */
 .footer{
-    height: 617px;
+    min-height: 617px;
     background: rgb(25, 25, 25);
     padding-top: 90px;
-}
-.footer__wrapper{
-
 }
 .footer__logo{
     font-family: LibreFranklin-Regular;
@@ -433,15 +442,20 @@ button{
     }
 
     /* footer  */
-    .footer{
-        height: 250px;
-    }
     .footer__logo{
+        display: flex;
+        flex-direction: row;
+    }
+    .footer__link__box__w{
+        display: flex;
+        justify-content: space-around;
+    }
+    .footer__links{
         display: flex;
         flex-direction: column;
     }
-    .footer__links{
-        display: none;
+    .footer__theme{
+        margin-top: 25px;
     }
 }
 
@@ -497,10 +511,6 @@ button{
         padding: 10px 15px;
         margin-top: 0px;
     }
-    /* scroolTop  */
-    .scroolTop{
-        display: none;
-    }
     /* featured  */
     .featured__card__theme{
         font-size: 10px;
@@ -508,9 +518,26 @@ button{
     }
 
     /* footer  */
-    .footer{
-        height: 150px;
+    .footer__logo span{
+        font-size: 10px;
     }
+    .footer__link__box__w{
+        padding-top: 45px;
+    }
+    .footer__btn{
+        width: 130px;
+    }
+    .footer__btn input{
+        width: 130px;
+    }
+    .footer__btn input::placeholder{
+        font-size: 10px;
+    }
+    .footer__btn button{
+        padding: 10px 15px;
+        font-size: 10px;
+    }
+
 }
 
 @media (max-width: 400px) {
@@ -542,5 +569,25 @@ button{
     }
     .card__autor{
         font-size: 8px;
+    }
+    /* footer  */
+    .footer__link{
+        font-size: 10px;
+    }
+    .footer__theme{
+        font-size: 10px;
+    }
+    .footer__btn{
+        width: 100px;
+    }
+    .footer__btn input{
+        width: 100px;
+    }
+    .footer__btn input::placeholder{
+        font-size: 8px;
+    }
+    .footer__btn button{
+        padding: 7px 12px;
+        font-size: 10px;
     }
 }
